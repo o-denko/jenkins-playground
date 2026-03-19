@@ -10,7 +10,7 @@ pipeline {
         stage('Install Apache') {
             steps {
                 sshagent(['ubuntu-ssh-creds']) { // ID credentials Jenkins
-                    sh "ssh -o StrictHostKeyChecking=no ${SSH_USER}@${REMOTE_HOST} 'sudo apt update && sudo apt install -y apache2'"
+                    sh "ssh -tt -o StrictHostKeyChecking=no ${SSH_USER}@${REMOTE_HOST} 'sudo apt update && sudo apt install -y apache2'"
                 }
             }
         }
